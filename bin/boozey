@@ -31,9 +31,29 @@ program
                 query: program.query
             });
         } else {
-            beers = boozey.beers.get(program.id, process.token);
+            beers = boozey.beer.get(program.id, process.token);
         }
         go(beers);
+    });
+
+program
+    .command('brewery')
+    .description('Perform options for a brewery')
+    .action(function () {
+        var brewery;
+        if (!program.id) {
+            brewery = boozey.brewery.all({
+                token: program.token,
+                page: program.page,
+                perPage: program.perPage,
+                order: program.order,
+                dir: program.dir,
+                query: program.query
+            });
+        } else {
+            brewery = boozey.brewery.get(program.id, process.token);
+        }
+        go(brewery);
     });
 
 program.parse(process.argv);
