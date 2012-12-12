@@ -7,7 +7,7 @@ var prettyjson = require('prettyjson');
 
 program
     .version(boozey.version)
-    .option('-k, --key <key>', 'API key')
+    .option('-t, --token <token>', 'API token')
     .option('-b, --beers', 'Gets a list of beers')
     .option('-p, --pretty', 'Pretty print the result')
     .option('--page [page]', 'Page number to get', Number, 1)
@@ -22,7 +22,7 @@ if (program.beers) {
     var beers;
     if (!program.id) {
         beers = boozey.beers.all({
-            key: program.key,
+            token: program.token,
             page: program.page,
             perPage: program.perPage,
             order: program.order,
@@ -30,7 +30,7 @@ if (program.beers) {
             query: program.query
         });
     } else {
-        beers = boozey.beers.get(program.key, program.id);
+        beers = boozey.beers.get(program.id, process.token);
     }
     go(beers);
 }

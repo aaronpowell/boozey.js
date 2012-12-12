@@ -5,7 +5,8 @@
   "main": "./src/boozey.js",
   "dependencies": {
     "commander": "~1.1.1",
-    "request": "~2.12.0"
+    "request": "~2.12.0",
+    "prettyjson": "~0.7.1"
   },
   "devDependencies": {},
   "scripts": {

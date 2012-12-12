@@ -11,7 +11,7 @@ module.exports.beers = {
         return request({
             url: baseUri + 'beers.json',
             qs: {
-                token: options.key,
+                token: options.token,
                 order: (options.order || 'id') + ' ' + (options.dir || 'ASC'),
                 page: options.page || 1,
                 per_page: options.perPage || 50,
@@ -19,11 +19,11 @@ module.exports.beers = {
             }
         });
     },
-    get: function (key, id) {
+    get: function (id, token) {
         return request({
             url: baseUri + 'beers/' + id + '.json',
             qs: {
-                token: key
+                token: token
             }
         });
     }
