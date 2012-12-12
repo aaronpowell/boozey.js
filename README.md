@@ -1,6 +1,6 @@
 # Boozey
 
-[![Build Status](https://travis-ci.org/aaronpowell/boozey.js.png)](https://travis-ci.org/aaronpowell/boozey.js)
+[![Build Status](https://travis-ci.org/aaronpowell/boozey.js.png?branch=master)](https://travis-ci.org/aaronpowell/boozey.js)
 
 Boozey is a library (and cli tool) for querying the [Open Beer Database](http://openbeerdatabase.com) API v1.
 
