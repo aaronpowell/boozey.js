@@ -38,4 +38,23 @@ describe('beer spec', function () {
 
         boozey.beers.all().pipe(writableStream);
     });
+
+    it('should have options provided to a get all request', function (done) {
+        var writableStream = new stream.Stream();
+        writableStream.writable = true;
+
+        var args = [];
+
+        writableStream.write = function (data) {
+            args.push(data);
+        };
+        writableStream.end = function () {
+            expect(args[1].qs.query).to.equal('ale');
+            done();
+        };
+
+        boozey.beers.all({
+            query: 'ale'
+        }).pipe(writableStream);
+    });
 });
