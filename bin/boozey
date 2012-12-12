@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+    .version('0.1.0')
+    .option('-k, --key', 'API key')
+    .option('-b, --beers', 'Gets a list of beers')
+    .parse(process.argv);
+
+if (!program.key) {
+    console.log('Please ensure you provide your API key with the -k switch');
+    return;
+}
+
+var boozey = require('../src/boozey.js');
+
+if (program.beers) {
+    console.log('beers');
+
+    var beers = boozey.beers(process.key, function () {
+        console.log(arguments);
+    });
+}
