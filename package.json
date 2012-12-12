@@ -1,6 +1,6 @@
 {
   "name": "boozey",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Boozey is a library for working with the Open Beer Database",
   "main": "./src/boozey.js",
   "dependencies": {

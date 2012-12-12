@@ -19,7 +19,7 @@ describe('beer spec', function () {
             done();
         };
 
-        boozey.beers.get(3).pipe(writableStream);
+        boozey.beer.get(3).pipe(writableStream);
     });
 
     it('should allow to get all', function (done) {
@@ -36,7 +36,7 @@ describe('beer spec', function () {
             done();
         };
 
-        boozey.beers.all().pipe(writableStream);
+        boozey.beer.all().pipe(writableStream);
     });
 
     it('should have options provided to a get all request', function (done) {
@@ -53,7 +53,7 @@ describe('beer spec', function () {
             done();
         };
 
-        boozey.beers.all({
+        boozey.beer.all({
             query: 'ale'
         }).pipe(writableStream);
     });

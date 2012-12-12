@@ -22,7 +22,7 @@ program
     .action(function () {
         var beers;
         if (!program.id) {
-            beers = boozey.beers.all({
+            beers = boozey.beer.all({
                 token: program.token,
                 page: program.page,
                 perPage: program.perPage,
