@@ -1,24 +1,51 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var boozey = require('../src/boozey.js');
+var stream = require('stream');
+var prettyjson = require('prettyjson');
 
 program
-    .version('0.1.0')
-    .option('-k, --key', 'API key')
+    .version(boozey.version)
+    .option('-k, --key <key>', 'API key')
     .option('-b, --beers', 'Gets a list of beers')
+    .option('-p, --pretty', 'Pretty print the result')
+    .option('--page [page]', 'Page number to get', Number, 1)
+    .option('-pp, --per-page [perPage]', 'Records per page', Number, 50)
+    .option('--order-by [order]', 'Field to order by', String, 'id')
+    .option('-d, --direction [dir]', 'Sort order direction, ASC or DESC', String, 'ASC')
+    .option('-q, --query [query]', 'Query to use to filter the data set')
+    .option('-i, --id <id>', 'Id of the specific beer to get')
     .parse(process.argv);
 
-if (!program.key) {
-    console.log('Please ensure you provide your API key with the -k switch');
-    return;
+if (program.beers) {
+    var beers;
+    if (!program.id) {
+        beers = boozey.beers.all({
+            key: program.key,
+            page: program.page,
+            perPage: program.perPage,
+            order: program.order,
+            dir: program.dir,
+            query: program.query
+        });
+    } else {
+        beers = boozey.beers.get(program.key, program.id);
+    }
+    go(beers);
 }
 
-var boozey = require('../src/boozey.js');
-
-if (program.beers) {
-    console.log('beers');
-
-    var beers = boozey.beers(process.key, function () {
-        console.log(arguments);
-    });
+function go(req) {
+    var s = new stream.Stream();
+    s.writable = true;
+    var x = '';
+    s.write = function (data) {
+        x += data;
+    };
+    s.end = function () {
+        x = program.pretty ? prettyjson.render(JSON.parse(x)) : x;
+        process.stdout.write(x);
+        process.stdout.write('\n');
+    };
+    req.pipe(s);
 }

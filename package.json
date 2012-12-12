@@ -1,0 +1,25 @@
+{
+  "name": "boozey",
+  "version": "0.1.0",
+  "description": "Boozey is a library for working with the Open Beer Database",
+  "main": "./src/boozey.js",
+  "dependencies": {
+    "commander": "~1.1.1",
+    "request": "~2.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaronpowell/boozey.js.git"
+  },
+  "keywords": [
+    "cli",
+    "beer",
+    "api"
+  ],
+  "author": "Aaron Powell <me@aaron-powell.com>",
+  "license": "MIT"
+}
