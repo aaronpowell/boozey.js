@@ -22,7 +22,7 @@ Use it as a package:
 
 You can pass in any of the arguments as defined on the [website](http://openbeerdatabase.com/documentation/beers-get):
 
-    boozey.beers.all({
+    boozey.beer.all({
         query: 'ale',
         order: 'id',
         dir: 'ASC',
@@ -33,7 +33,11 @@ You can pass in any of the arguments as defined on the [website](http://openbeer
 
 To get back a single beer use the `get` method:
 
-    boozey.beers.get(3).pipe(process.stdout);
+    boozey.beer.get(3).pipe(process.stdout);
+
+If you want to query against breweries not beers then just change `beer` to `brewery`:
+
+    boozey.brewery.get(3);
 
 ## cli
 
@@ -41,25 +45,29 @@ Install it as a global npm package:
 
     npm install -g boozey
 
-  Usage: boozey [options]
+    Usage: boozey [options] [command]
 
-      Options:
+    Commands:
 
-        -h, --help                 output usage information
-        -V, --version              output the version number
-        -k, --key <key>            API key
-        -b, --beers                Gets a list of beers
-        -p, --pretty               Pretty print the result
-        --page [page]              Page number to get
-        -pp, --per-page [perPage]  Records per page
-        --order-by [order]         Field to order by
-        -d, --direction [dir]      Sort order direction, ASC or DESC
-        -q, --query [query]        Query to use to filter the data set
-        -i, --id <id>              Id of the specific beer to get
+      beer                   Perform operations for beer
+      brewery                Perform options for a brewery
+
+    Options:
+
+      -h, --help                 output usage information
+      -V, --version              output the version number
+      -t, --token <token>        API token
+      -p, --pretty               Pretty print the result
+      --page [page]              Page number to get
+      -pp, --per-page [perPage]  Records per page
+      --order-by [order]         Field to order by
+      -d, --direction [dir]      Sort order direction, ASC or DESC
+      -q, --query [query]        Query to use to filter the data set
+      -i, --id <id>              Id of the specific beer to get
 
 For example (pretty prints the first 5 beers):
 
-    boozey -b -p -pp 5
+    boozey beer -p -pp 5
 
 # License
 
