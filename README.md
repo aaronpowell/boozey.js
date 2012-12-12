@@ -18,7 +18,7 @@ Use it as a package:
 
     var boozey = require('boozey');
 
-    boozey.beers.all().pipe(process.stdout);
+    boozey.beer.all().pipe(process.stdout);
 
 You can pass in any of the arguments as defined on the [website](http://openbeerdatabase.com/documentation/beers-get):
 
