@@ -8,9 +8,12 @@
     "request": "~2.12.0",
     "prettyjson": "~0.7.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make tests"
   },
   "repository": {
     "type": "git",

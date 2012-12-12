@@ -8,8 +8,8 @@ module.exports.version = '0.1.0';
 
 module.exports.beers = {
     all: function (options) {
-        return request({
-            url: baseUri + 'beers.json',
+        options = options || {};
+        return request.get(baseUri + 'beers.json', {
             qs: {
                 token: options.token,
                 order: (options.order || 'id') + ' ' + (options.dir || 'ASC'),
@@ -20,8 +20,7 @@ module.exports.beers = {
         });
     },
     get: function (id, token) {
-        return request({
-            url: baseUri + 'beers/' + id + '.json',
+        return request.get(baseUri + 'beers/' + id + '.json', {
             qs: {
                 token: token
             }
